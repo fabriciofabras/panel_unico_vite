@@ -7,12 +7,7 @@ import ModalAltaUsuario from './ModalAltaUsuario';
 
 export const Usuarios = () => {
 
-    console.log("window.self,window.top")
-    console.log(window.self,window.top)
-
     const isInIframe = window.self !== window.top;
-
-    console.log(isInIframe);
 
     const [usuarios, setUsuarios] = useState([]);
 
@@ -21,7 +16,6 @@ export const Usuarios = () => {
     const [editMode, setEditMode] = useState(false)
 
     const [show, setShow] = useState(false);
-    const [readOnly, setReadOnly] = useState(false);
 
     const [idUsuario, setIdUsuario] = useState('');
 
@@ -35,9 +29,7 @@ export const Usuarios = () => {
     const openModalForCreate = () => {
         setAccion('Agregar')
         setEditMode(false)
-       // setIdProducto(null)
         setShow(true);
-        setReadOnly(readOnly)
     }
     const handleClose = () => setShow(false);
 
@@ -55,15 +47,7 @@ export const Usuarios = () => {
                     console.log(e.message);
                 });
         } else {
-            getUsuarios()
-                .then((res) => {
-                    console.log("RES");
-                    console.log(res);
-                    setUsuarios(res);
-                })
-                .catch((e) => {
-                    console.log(e.message);
-                });
+            console.log("Not in frame")
         }
     }
         , [show]);
@@ -91,8 +75,7 @@ export const Usuarios = () => {
                                 <th style={{width: "10%"}}>Teléfono</th>
                                 <th style={{width: "15%"}}>Correo</th>
                                 <th style={{width: "15%"}}>Perfil</th>
-{/*                                 <th style={{width: "15%"}}>Password</th>
- */}                                <th className="fixed-col">Editar</th>
+                                <th className="fixed-col">Editar</th>
                             </tr>
                     </thead>
                     <tbody>

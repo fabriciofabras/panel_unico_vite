@@ -1,4 +1,4 @@
-import { Col, Container, Row } from "react-bootstrap"
+import { Col, Row } from "react-bootstrap"
 import { Menu } from "./Menu"
 import { Productos } from "./Productos"
 import { useState } from "react"
@@ -8,7 +8,7 @@ export const Dashboard = () => {
 
     const [seleccion, setSeleccion] = useState(1)
 
-  const  onOpcionSeleccionada =(opcion) =>{
+    const onOpcionSeleccionada = (opcion) => {
         setSeleccion(opcion)
     }
 

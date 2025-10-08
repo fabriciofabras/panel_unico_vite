@@ -8,13 +8,13 @@ export const getServidores = (table) => {
         const resp = await fetch(url);
         const results = await resp.json();
 
-        let cmdbItems=  results.map(servidor => ({
+        let cmdbItems = results.map(servidor => ({
             noSerie: servidor.noSerie,
             nombre: servidor.nombre,
             descipcionCI: servidor.descipcionCI,
             mantenimiento: servidor.mantenimiento,
             empresa: servidor.empresa,
-            estadoCI:servidor.estadoCI,
+            estadoCI: servidor.estadoCI,
             impacto: servidor.impacto,
             urgencia: servidor.urgencia,
             prioridad: servidor.prioridad,
@@ -68,7 +68,7 @@ export const getServidores = (table) => {
             altaTomaOperativa: servidor.altaTomaOperativa
         }));
 
-        console.log("results",results)
+        console.log("results", results)
 
         switch (table) {
 
@@ -134,12 +134,11 @@ export const getServidores = (table) => {
                 }));
                 return cmdbItems;
 
-                case "almacenamiento": 
+            case "almacenamiento":
                 cmdbItems = results.map(almacenamiento => ({
                     noSerie: almacenamiento.noSerie,
                     nombre: almacenamiento.nombre,
                     descripcionCI: almacenamiento.descripcionCI,
-                    noSerie: almacenamiento.noSerie,
                     mantenimiento: almacenamiento.mantenimiento,
                     empresa: almacenamiento.empresa,
                     estadoCI: almacenamiento.estadoCI,
@@ -172,7 +171,7 @@ export const getServidores = (table) => {
                 }));
                 return cmdbItems;
 
-                case "telecomunicaciones": 
+            case "telecomunicaciones":
                 cmdbItems = results.map(almacenamiento => ({
                     noSerie: almacenamiento.noSerie,
                     nombre: almacenamiento.nombre,
@@ -216,4 +215,7 @@ export const getServidores = (table) => {
     return getServidores();
 }
 
-
+// Validación de props
+UserProfileProvider.propTypes = {
+    table: PropTypes.node.isRequired,
+};

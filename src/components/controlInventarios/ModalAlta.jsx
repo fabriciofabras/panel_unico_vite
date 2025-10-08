@@ -17,31 +17,46 @@ function ModalAlta({ isEditMode, idProducto, handleClose, show, accion }) {
     if (isEditMode && idProducto !== null) {
 
       // Llamado al servicio para obtener los datos del producto por ID
-      getProducto(idProducto).then((res => {
-        console.log("res", res)
-        setFormData({
-          id:res.id ? res._id: "",
-          tipo: res.tipo ? res.tipo : "",
-          noParte: res.noParte ? res.noParte : "",
-          descripcion: res.descripcion ? res.descripcion : "",
-          componente: res.componente ? res.componente : "",
-          sede: res.sede ? res.sede : "",
-          ubicacion: res.ubicacion ? res.ubicacion : "",
-          minStock: res.minStock ? res.minStock : "",
-          cantidad: res.cantidad ? res.cantidad : "",
-          reorden: res.reorden ? res.reorden : "",
-          maxStock: res.maxStock ? res.maxStock : "",
-          proveedor: res.proveedor ? res.proveedor : "",
-          sendor: res.sendor ? res.sendor : "",
-          pnVendor: res.pnVendor ? res.pnVendor : "",
-          snVendor: res.snVendor ? res.snVendor : "",
-          snEmc: res.snEmc ? res.snEmc : "",
-          capacidad: res.capacidad ? res.capacidad : ""
-        }
-        )
-      })).catch((e) => {
-        console.log(e.message)
-      })
+      // Llamado al servicio para obtener los datos del producto por ID
+      getProducto(idProducto)
+        .then((res) => {
+          console.log("res", res);
+
+          const campos = [
+            "id",
+            "_id",
+            "tipo",
+            "noParte",
+            "descripcion",
+            "componente",
+            "sede",
+            "ubicacion",
+            "minStock",
+            "cantidad",
+            "reorden",
+            "maxStock",
+            "proveedor",
+            "sendor",
+            "pnVendor",
+            "snVendor",
+            "snEmc",
+            "capacidad",
+          ];
+
+          const datos = campos.reduce((acc, campo) => {
+            if (campo === "id") {
+              acc.id = res.id ?? res._id ?? ""; // Usa id o _id
+            } else if (campo !== "_id") {
+              acc[campo] = res[campo] ?? "";
+            }
+            return acc;
+          }, {});
+
+          setFormData(datos);
+        })
+        .catch((e) => {
+          console.error("Error al obtener producto:", e.message);
+        });
 
     } else {
       // Limpiar el formulario si es un alta
@@ -84,16 +99,15 @@ function ModalAlta({ isEditMode, idProducto, handleClose, show, accion }) {
     sendor: '',
     pnVendor: '',
     snVendor: '',
-    snEmc: '',
-    cantidad: ''
+    snEmc: ''
   });
 
   const altaProductos = () => {
 
-    if(isEditMode){
+    if (isEditMode) {
 
       editProducto(formData);
-    }else{
+    } else {
       altaProducto(formData);
 
     }

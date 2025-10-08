@@ -1,4 +1,5 @@
 import React, { createContext, useState } from 'react';
+import PropTypes from 'prop-types';
 
 // Crear el contexto
 export const UserProfileContext = createContext();
@@ -12,4 +13,9 @@ export const UserProfileProvider = ({ children }) => {
       {children}
     </UserProfileContext.Provider>
   );
+};
+
+// Validación de props
+UserProfileProvider.propTypes = {
+  children: PropTypes.node.isRequired,
 };

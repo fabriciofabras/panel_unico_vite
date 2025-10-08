@@ -1,15 +1,14 @@
-import { Col, Container, Row } from "react-bootstrap"
+import { Col, Row } from "react-bootstrap"
 import { Menu } from "./Menu"
 import { CMDBCustom } from "./CMDBCustom"
 import { useState } from "react"
-import { Usuarios } from "./Usuarios"
 import { itemsCmdb } from "./itemsCmdb"
 
 export const Dashboard = () => {
 
     const [seleccion, setSeleccion] = useState(0)
 
-  const  onOpcionSeleccionada =(opcion) =>{
+    const onOpcionSeleccionada = (opcion) => {
         setSeleccion(opcion)
     }
 
@@ -24,7 +23,7 @@ export const Dashboard = () => {
                 </Col>
                 <Col xl={10} lg={9}>
 
-                 <CMDBCustom cmdbTipo={itemsCmdb[seleccion]} />
+                    <CMDBCustom cmdbTipo={itemsCmdb[seleccion]} />
                 </Col>
                 <Col>
                 </Col>

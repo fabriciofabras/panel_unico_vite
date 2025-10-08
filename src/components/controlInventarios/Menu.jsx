@@ -1,7 +1,6 @@
-import { Card, Image, OverlayTrigger, Stack, Tooltip } from "react-bootstrap"
-import { Arrow90degRight, ArrowRight, Basket2, Binoculars, ClipboardCheck, House, PeopleFill } from "react-bootstrap-icons"
-import Man from "../../assets/man.png"
-import { createContext, useContext } from "react"
+import { OverlayTrigger, Stack, Tooltip } from "react-bootstrap"
+import { Basket2, PeopleFill } from "react-bootstrap-icons"
+import { useContext } from "react"
 import { UserProfileContext } from "../../UserProfileContext"
 
 export const Menu = ({ onOpcionSeleccionada }) => {

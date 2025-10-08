@@ -7,12 +7,7 @@ import ModalAltaUsuario from './ModalAltaUsuario';
 
 export const Usuarios = () => {
 
-    console.log("window.self,window.top")
-    console.log(window.self,window.top)
-
     const isInIframe = window.self !== window.top;
-
-    console.log(isInIframe);
 
     const [usuarios, setUsuarios] = useState([]);
 
@@ -82,7 +77,7 @@ export const Usuarios = () => {
                     </Col>
                 </Row>
             </Container>
-            <div class="table-responsive" >
+            <div className="table-responsive" >
                 <Table className="table p-4 small " variant striped bordered hover>
                     <thead>
                        <tr style={{fontSize:"12px"}}>

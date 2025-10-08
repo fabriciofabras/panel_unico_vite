@@ -129,7 +129,7 @@ export const Productos = () => {
         setEditMode(false)
         setIdProducto(null)
         setShow(true);
-        setReadOnly(readOnly)
+       // setReadOnly(readOnly)
     }
     const handleClose = () => setShow(false);
 

@@ -17,31 +17,42 @@ function ModalAlta({ isEditMode, idServidor, handleClose, show, accion }) {
     if (isEditMode && idServidor !== null) {
 
       // Llamado al servicio para obtener los datos del servidor por ID
-      getServidor(idServidor).then((res => {
-        console.log("res", res)
-        setFormData({
-          id:res.id ? res._id: "",
-          tipo: res.tipo ? res.tipo : "",
-          noParte: res.noParte ? res.noParte : "",
-          descripcion: res.descripcion ? res.descripcion : "",
-          componente: res.componente ? res.componente : "",
-          sede: res.sede ? res.sede : "",
-          ubicacion: res.ubicacion ? res.ubicacion : "",
-          minStock: res.minStock ? res.minStock : "",
-          cantidad: res.cantidad ? res.cantidad : "",
-          reorden: res.reorden ? res.reorden : "",
-          maxStock: res.maxStock ? res.maxStock : "",
-          proveedor: res.proveedor ? res.proveedor : "",
-          sendor: res.sendor ? res.sendor : "",
-          pnVendor: res.pnVendor ? res.pnVendor : "",
-          snVendor: res.snVendor ? res.snVendor : "",
-          snEmc: res.snEmc ? res.snEmc : "",
-          capacidad: res.capacidad ? res.capacidad : ""
-        }
-        )
-      })).catch((e) => {
-        console.log(e.message)
-      })
+      getServidor(idServidor).then((res) => {
+        console.log("res", res);
+
+        const campos = [
+          "id",
+          "_id",
+          "tipo",
+          "noParte",
+          "descripcion",
+          "componente",
+          "sede",
+          "ubicacion",
+          "minStock",
+          "cantidad",
+          "reorden",
+          "maxStock",
+          "proveedor",
+          "sendor",
+          "pnVendor",
+          "snVendor",
+          "snEmc",
+          "capacidad"
+        ];
+
+        // Mapeamos automáticamente cada campo: si no existe, asignamos ""
+        const datos = campos.reduce((acc, campo) => {
+          if (campo === "id") {
+            acc.id = res.id ?? res._id ?? ""; // combina ambos posibles IDs
+          } else if (campo !== "_id") {
+            acc[campo] = res[campo] ?? "";
+          }
+          return acc;
+        }, {});
+
+        setFormData(datos);
+      });
 
     } else {
       // Limpiar el formulario si es un alta
@@ -85,15 +96,14 @@ function ModalAlta({ isEditMode, idServidor, handleClose, show, accion }) {
     pnVendor: '',
     snVendor: '',
     snEmc: '',
-    cantidad: ''
   });
 
   const altaServidores = () => {
 
-    if(isEditMode){
+    if (isEditMode) {
 
       editServidor(formData);
-    }else{
+    } else {
       altaServidor(formData);
 
     }
