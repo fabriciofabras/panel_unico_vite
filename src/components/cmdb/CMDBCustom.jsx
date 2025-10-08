@@ -1,24 +1,22 @@
 import Table from 'react-bootstrap/Table';
 import { Col, Container, Form, InputGroup, Row } from 'react-bootstrap';
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import ModalAlta from './ModalAlta';
-import { UserProfileContext } from '../../UserProfileContext';
 import { getServidores } from '../../helpers/cmdb/getServidores';
+import PropTypes from 'prop-types';
 
 export const CMDBCustom = ({ cmdbTipo }) => {
 
-    const isInIframe = window.self !== window.top;
 
     const [servidores, setServidores] = useState([]);
 
-    const [accion, setAccion] = useState()
+    const [accion] = useState()
 
-    const [editMode, setEditMode] = useState(false)
+    const [editMode] = useState(false);
 
     const [show, setShow] = useState(false);
-    const [readOnly, setReadOnly] = useState(false);
 
-    const [idServidor, setIdServidor] = useState('');
+    const [idServidor] = useState('');
 
     const [filteredData, setFilteredData] = useState([]);
 
@@ -74,7 +72,7 @@ export const CMDBCustom = ({ cmdbTipo }) => {
                     </Row>
                 </Container>
             </div>
-            <div class="table-responsive" className="scrollable-section table-container">
+            <div className="table-responsive scrollable-section table-container">
                 <Table className="table p-1 small " variant striped bordered hover>
                     <thead className="table-header">
                         <tr style={{ fontSize: "12px" }}>
@@ -111,3 +109,12 @@ export const CMDBCustom = ({ cmdbTipo }) => {
         </div>
     )
 }
+
+CMDBCustom.propTypes = {
+    cmdbTipo: PropTypes.shape({
+        table: PropTypes.string.isRequired,
+        fieldsTable: PropTypes.arrayOf(PropTypes.object).isRequired,
+        title: PropTypes.string.isRequired,
+        titleSingular: PropTypes.string.isRequired,
+    }).isRequired,
+};

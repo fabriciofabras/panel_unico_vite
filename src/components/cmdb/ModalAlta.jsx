@@ -7,7 +7,7 @@ import Col from 'react-bootstrap/Col';
 import { altaServidor } from '../../helpers/controlInventarios/altaServidor';
 import { getServidor } from '../../helpers/cmdb/getServidor';
 import { editServidor } from '../../helpers/controlInventarios/editServidor';
-
+import PropTypes from 'prop-types';
 
 function ModalAlta({ isEditMode, idServidor, handleClose, show, accion }) {
 
@@ -351,3 +351,11 @@ function ModalAlta({ isEditMode, idServidor, handleClose, show, accion }) {
 }
 
 export default ModalAlta;
+
+ModalAlta.propTypes = {
+  isEditMode: PropTypes.bool.isRequired,
+  idServidor: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  handleClose: PropTypes.func.isRequired,
+  show: PropTypes.bool.isRequired,
+  accion: PropTypes.string, // si es opcional
+};

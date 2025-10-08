@@ -214,8 +214,3 @@ export const getServidores = (table) => {
 
     return getServidores();
 }
-
-// Validación de props
-UserProfileProvider.propTypes = {
-    table: PropTypes.node.isRequired,
-};
