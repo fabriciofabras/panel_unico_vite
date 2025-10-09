@@ -17,32 +17,30 @@ export const Login = ({ handleLogueado }) => {
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
   const [sesionActiva, setSesionActiva] = useState(false);
-  const [idSesion,setIdSesion] = useState("")
-  let confirmacionLoggeoNuevo;
 
-  const validarUsuario =(confirmNewSession, userId)=>{
+  const validarUsuario = (confirmNewSession, userId) => {
 
-    validateUser(formData,confirmNewSession, userId)
-    .then((res) => {
-      console.log("RES");
-      console.log(res);
+    validateUser(formData, confirmNewSession, userId)
+      .then((res) => {
+        console.log("RES");
+        console.log(res);
 
-      if (res.message === "El usuario ha sido logueado") {
-        setProfile(res)
-        handleLogueado(true);
-      } else {
-
-        if (res.message === "El usuario ya se encuentra loggeado,¿Desea iniciar sesión en esta ventana?") {
+        if (res.message === "El usuario ha sido logueado") {
           setProfile(res)
-          setSesionActiva(true);
-        }
-        setError(res.message);
-      }
+          handleLogueado(true);
+        } else {
 
-    })
-    .catch((e) => {
-      console.log(e.message);
-    });
+          if (res.message === "El usuario ya se encuentra loggeado,¿Desea iniciar sesión en esta ventana?") {
+            setProfile(res)
+            setSesionActiva(true);
+          }
+          setError(res.message);
+        }
+
+      })
+      .catch((e) => {
+        console.log(e.message);
+      });
 
   }
 
@@ -52,20 +50,20 @@ export const Login = ({ handleLogueado }) => {
     e.preventDefault();
 
     const clientID = "5072c397-67d6-4660-afd4-ff3c453243a6";  // Reemplaza con tu Client ID
-const redirectUri = "https://sari2p1uat.atalait.com.mx/inicio"; // Reemplaza con tu URL de redirección
-const scope = "PanelUnicoSARI2P1";
+    const redirectUri = "https://sari2p1uat.atalait.com.mx/inicio"; // Reemplaza con tu URL de redirección
+    const scope = "PanelUnicoSARI2P1";
 
-const responseType = "code"; // O "code" si planeas usarlo en el backend para obtener el token de acceso
+    const responseType = "code"; // O "code" si planeas usarlo en el backend para obtener el token de acceso
 
-const resourceServer= "PanelUnicoSARI2P1"
+    const resourceServer = "PanelUnicoSARI2P1"
 
-//const authUrl = `https://auth.uat.cloudb.sat.gob.mx`;
- const authUrl = `https://auth.uat.cloudb.sat.gob.mx/nidp/oauth/nam/authz?resource_server=${resourceServer}&client_id=${clientID}&redirect_uri=${redirectUri}&response_type=${responseType}&scope=${scope}&include_granted_scopes=true`;
- 
-// Redirigir a la página de autenticación de Google
-window.location.href = authUrl;
+    //const authUrl = `https://auth.uat.cloudb.sat.gob.mx`;
+    const authUrl = `https://auth.uat.cloudb.sat.gob.mx/nidp/oauth/nam/authz?resource_server=${resourceServer}&client_id=${clientID}&redirect_uri=${redirectUri}&response_type=${responseType}&scope=${scope}&include_granted_scopes=true`;
 
-   // validarUsuario(false);
+    // Redirigir a la página de autenticación de Google
+    window.location.href = authUrl;
+
+    // validarUsuario(false);
   }
 
   const handleChange = (e) => {
@@ -78,14 +76,14 @@ window.location.href = authUrl;
     });
   };
 
-  const handleConfirmSesion = () =>{
+  const handleConfirmSesion = () => {
 
-      validarUsuario(true, profile.usuarioSesion._id)
-      
-      console.log("handleConfirmSesion",profile.usuarioSesion._id)
+    validarUsuario(true, profile.usuarioSesion._id)
+
+    console.log("handleConfirmSesion", profile.usuarioSesion._id)
   }
 
-  const handleCancelSesion = () =>{
+  const handleCancelSesion = () => {
     setSesionActiva(false);
     setError("");
 
@@ -128,8 +126,8 @@ window.location.href = authUrl;
               {sesionActiva ? (<div>
                 <Row>
                   <Col className="text-align-center">
-                  <Button onClick={handleConfirmSesion} className="m-3" >Si</Button>
-                  <Button onClick={handleCancelSesion} className="m-3">No</Button>
+                    <Button onClick={handleConfirmSesion} className="m-3" >Si</Button>
+                    <Button onClick={handleCancelSesion} className="m-3">No</Button>
 
                   </Col>
                   <Col>

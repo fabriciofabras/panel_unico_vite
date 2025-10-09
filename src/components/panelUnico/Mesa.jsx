@@ -1,5 +1,4 @@
 import React from "react";
-import inicio_panel from '../../assets/inicio_panel.png'
 export const Mesa = () => {
 
   return (

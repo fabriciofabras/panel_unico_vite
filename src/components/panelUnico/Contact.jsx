@@ -5,7 +5,7 @@ export const Contact = () => {
         <section id="contact" className="relative">
             <div className="container px-5 py-3  flex sm:flex-nowrap flex-wrap">
                 <form
-                    netlify
+                    //netlify
                     name="contact"
                     id="contact"
                     className="lg:w-3/3 md:w-2/2 flex flex-col md:mx-6 w-full md:py-8 mt-8 md:mt-0">

@@ -26,62 +26,18 @@ export const Productos = () => {
     const [editMode, setEditMode] = useState(false)
 
     const [show, setShow] = useState(false);
-    const [readOnly, setReadOnly] = useState(false);
 
     const [idProducto, setIdProducto] = useState('');
 
-    const [busqueda, setBusqueda] = useState('');
+    const [setBusqueda] = useState('');
 
     const [filteredData, setFilteredData] = useState([]);
-
-    /* const generatePDF = () => {
-        const input = document.getElementById('table-to-pdf');
-
-        const originalHeight = input.style.height;
-        const originalOverflow = input.style.overflow;
-
-        // Expandir la tabla temporalmente para capturar todo el contenido
-        input.style.height = 'auto';
-        input.style.overflow = 'visible';
-
-        html2canvas(input).then((canvas) => {
-            const imgData = canvas.toDataURL('image/png');
-            const pdf = new jsPDF();
-            const imgWidth = 210; // A4 width in mm
-            const pageHeight = 295; // A4 height in mm
-            const imgHeight = (canvas.height * imgWidth) / canvas.width;
-            let heightLeft = imgHeight;
-            let position = 0;
-
-            pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
-            heightLeft -= pageHeight;
-
-            while (heightLeft >= 0) {
-                position = heightLeft - imgHeight;
-                pdf.addPage();
-                pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
-                heightLeft -= pageHeight;
-            }
-
-            pdf.save('tabla.pdf');
-
-            // Restaurar el estilo original
-            input.style.height = originalHeight;
-            input.style.overflow = originalOverflow;
-        });
-    };
- */
 
     const generatePDF = () => {
         const doc = new jsPDF();
 
         const currentDate = new Date();
-        const formattedDate = `${currentDate.getDate().toString().padStart(2, '0')}/${
-          (currentDate.getMonth() + 1).toString().padStart(2, '0')}/${currentDate.getFullYear()} ${
-          currentDate.getHours().toString().padStart(2, '0')}:${
-          currentDate.getMinutes().toString().padStart(2, '0')}`;
-
-
+        const formattedDate = `${currentDate.getDate().toString().padStart(2, '0')}/${(currentDate.getMonth() + 1).toString().padStart(2, '0')}/${currentDate.getFullYear()} ${currentDate.getHours().toString().padStart(2, '0')}:${currentDate.getMinutes().toString().padStart(2, '0')}`;
 
         const title = 'Stock de Partes Atalait';
         const pageWidth = doc.internal.pageSize.getWidth();
@@ -98,7 +54,7 @@ export const Productos = () => {
 
         // Crear la tabla en el PDF
         doc.autoTable({
-            startY:30,
+            startY: 30,
             head: headers,
             body: rows,
             headStyles: { fillColor: [255, 165, 0] }, // Color naranja
@@ -129,7 +85,7 @@ export const Productos = () => {
         setEditMode(false)
         setIdProducto(null)
         setShow(true);
-       // setReadOnly(readOnly)
+        // setReadOnly(readOnly)
     }
     const handleClose = () => setShow(false);
 
@@ -191,7 +147,7 @@ export const Productos = () => {
                         </Col>
                     </Row>
                 </Container>
-                <div id="table-to-pdf" style={{ height: '300px', overflow: 'auto' }} class="table-responsive" className="scrollable-section table-container">
+                <div id="table-to-pdf" style={{ height: '300px', overflow: 'auto' }} className="table-responsive scrollable-section table-container">
                     <Table className="table p-1 small " variant striped bordered hover>
                         <thead className="table-header">
                             {profile.perfil === 'sat' ? (

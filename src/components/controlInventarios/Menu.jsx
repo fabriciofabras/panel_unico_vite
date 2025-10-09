@@ -2,6 +2,7 @@ import { OverlayTrigger, Stack, Tooltip } from "react-bootstrap"
 import { Basket2, PeopleFill } from "react-bootstrap-icons"
 import { useContext } from "react"
 import { UserProfileContext } from "../../UserProfileContext"
+import PropTypes from "prop-types";
 
 export const Menu = ({ onOpcionSeleccionada }) => {
 
@@ -24,33 +25,7 @@ export const Menu = ({ onOpcionSeleccionada }) => {
     return (
         <Stack>
             <div>
-
-                {/* <Card
-                    bg={"white"}
-                    key={"warning"}
-                    text={"warning"}
-
-                    
-                >
-                    <Card.Header><Image src={Man} roundedCircle className="w-100"/></Card.Header>
-                    <Card.Body>
-                        <Card.Title>Fabricio Hernández </Card.Title>
-
-                    </Card.Body>
-                </Card> */}
-
-
             </div>
-         {/*  <div className="p-2" >
-                <OverlayTrigger
-                    placement="right"
-                    delay={{ show: 0, hide: 400 }}
-                    overlay={renderTooltip('Inicio')}
-                >
-                    <House className="icon-link icon-link-hover" size={50} ></House>
-                </OverlayTrigger>
-
-            </div>*/}
             {profile.perfil === "sat" ? (<div></div>) : (<div className="p-2">
                 <OverlayTrigger
                     placement="right"
@@ -71,36 +46,11 @@ export const Menu = ({ onOpcionSeleccionada }) => {
 
                 </OverlayTrigger>
             </div>
-           {/* <div className="p-2 align-items-center">
-                <OverlayTrigger
-                    placement="right"
-                    delay={{ show: 0, hide: 400 }}
-                    overlay={renderTooltip("Solicitud")}
-                >
-
-                    <ClipboardCheck className="icon-link icon-link-hover" size={50} />
-                </OverlayTrigger>
-            </div>
-            <div className="p-2">
-                <OverlayTrigger
-                    placement="right"
-                    delay={{ show: 0, hide: 400 }}
-                    overlay={renderTooltip("Tracking")}
-                >
-
-                    <Binoculars className="icon-link icon-link-hover" size={50} />
-                </OverlayTrigger>
-            </div>
-            <div className="p-2">
-                <OverlayTrigger
-                    placement="right"
-                    delay={{ show: 0, hide: 400 }}
-                    overlay={renderTooltip("Salir")}
-                >
-
-                    <ArrowRight className="icon-link icon-link-hover" size={50} />
-                </OverlayTrigger>
-            </div>*/}
         </Stack>
     )
 }
+
+// Validación de props
+Menu.propTypes = {
+    onOpcionSeleccionada: PropTypes.func.isRequired, // o sin .isRequired si es opcional
+};

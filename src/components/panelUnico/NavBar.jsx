@@ -1,9 +1,7 @@
-import { ArrowRightIcon } from "@heroicons/react/solid";
 import React from "react";
 import { useState, useContext } from "react";
 import { Col, Row } from "react-bootstrap";
 import { UserProfileContext } from "../../UserProfileContext";
-import { logoutUser } from "../../helpers/panelUnico/logoutUser";
 import { NavLink } from "react-router-dom";
 import axios from 'axios';
 
