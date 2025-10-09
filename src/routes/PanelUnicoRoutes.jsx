@@ -44,7 +44,7 @@ export const PanelUnicoRoutes = () => {
         <>
         <NavBar userInfo={userInfo}/>
 
-        {userInfo === null ? <div></div> : (
+        {userInfo !== null ? <div></div> : (
             <div className="container">
             <Routes>
             <Route path="/inicio" element={<About/>}></Route>

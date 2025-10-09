@@ -4,6 +4,7 @@ import { Col, Container, Row } from 'react-bootstrap';
 import { getUsuarios } from '../../helpers/controlInventarios/getUsuarios';
 import { useEffect, useState } from 'react';
 import ModalAltaUsuario from './ModalAltaUsuario';
+import PropTypes from 'prop-types';
 
 export const Usuarios = () => {
 
@@ -66,7 +67,7 @@ export const Usuarios = () => {
                     </Col>
                 </Row>
             </Container>
-            <div class="table-responsive" >
+            <div className="table-responsive" >
                 <Table className="table p-4 small " variant striped bordered hover>
                     <thead>
                        <tr style={{fontSize:"12px"}}>
@@ -99,3 +100,8 @@ export const Usuarios = () => {
         </div>
     )
 }
+
+// Validación de props
+Menu.propTypes = {
+  onOpcionSeleccionada: PropTypes.func.isRequired,
+};

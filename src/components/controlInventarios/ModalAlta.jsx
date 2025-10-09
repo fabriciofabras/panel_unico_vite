@@ -7,6 +7,7 @@ import Col from 'react-bootstrap/Col';
 import { altaProducto } from '../../helpers/controlInventarios/altaProducto';
 import { getProducto } from '../../helpers/controlInventarios/getProducto';
 import { editProducto } from '../../helpers/controlInventarios/editProducto';
+import PropTypes from 'prop-types';
 
 
 function ModalAlta({ isEditMode, idProducto, handleClose, show, accion }) {
@@ -353,5 +354,14 @@ function ModalAlta({ isEditMode, idProducto, handleClose, show, accion }) {
     </>
   );
 }
+
+// Validación de props
+ModalAlta.propTypes = {
+  isEditMode: PropTypes.bool.isRequired,
+  idProducto: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  handleClose: PropTypes.func.isRequired,
+  show: PropTypes.bool.isRequired,
+  accion: PropTypes.string
+};
 
 export default ModalAlta;

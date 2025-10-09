@@ -85,7 +85,6 @@ export const CMDBCustom = ({ cmdbTipo }) => {
                         {filteredData.map((servidor, index) => (
                             <tr key={index}>
                                 {servidor.estadoCI === 'Fuera de servicio' || servidor.estadoCI === 'Fuera de Servicio' ? (
-
                                     Object.keys(servidor).map((key) => (
                                         <td style={{ fontSize: "12px", backgroundColor: '#C0392B', color: 'white' }} key={key}>{servidor[key]}</td>
                                     ))
@@ -96,9 +95,6 @@ export const CMDBCustom = ({ cmdbTipo }) => {
                                     ))
 
                                 )}
-
-
-
                             </tr>
                         ))}
                         {/*  )

@@ -7,6 +7,7 @@ import Col from 'react-bootstrap/Col';
 import { editUsuario } from '../../helpers/controlInventarios/editUsuario';
 import { getUsuario } from '../../helpers/controlInventarios/getUsuario';
 import { altaUsuario } from '../../helpers/controlInventarios/altaUsuario';
+import PropTypes from 'prop-types';
 
 
 function ModalAltaUsuario({ isEditMode, idUsuario, handleClose, show, accion }) {
@@ -221,5 +222,14 @@ function ModalAltaUsuario({ isEditMode, idUsuario, handleClose, show, accion }) 
     </>
   );
 }
+
+// Validación de props
+ModalAltaUsuario.propTypes = {
+  isEditMode: PropTypes.bool.isRequired,
+  idUsuario: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  handleClose: PropTypes.func.isRequired,
+  show: PropTypes.bool.isRequired,
+  accion: PropTypes.string
+};
 
 export default ModalAltaUsuario;
