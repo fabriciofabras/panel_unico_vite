@@ -6,25 +6,6 @@ export const altaProducto = (formData) => {
 
       console.log("formData",formData)
 
-      const data = {
-        tipo: formData.tipo,
-        noParte: formData.noParte,
-        desc: formData.descripcion,
-        componente: formData.componente,
-        sede: formData.sede,
-        ubicacion: formData.ubicacion,
-        min_stock: formData.minStock,
-        cantidad: formData.cantidad,
-        max_stock: formData.maxStock,
-        reorden: formData.reorden,
-        proveedor: formData.proveedor,
-        sendor: formData.sendor,
-        pn_vendor: formData.pnVendor,
-        sn_vendor: formData.snVendor,
-        sn_emc: formData.snEmc,
-        capacidad: formData.capacidad
-    }
-
         fetch(`https:${URL_SERVER}/altaProducto`, {
           method: 'POST',
           headers: {

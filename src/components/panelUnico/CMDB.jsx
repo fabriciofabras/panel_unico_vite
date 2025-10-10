@@ -1,6 +1,6 @@
 import React from "react";
 import {Dashboard} from "../cmdb/Dashboard"
-export const CMDB = () => {
+export const Cmdb = () => {
 
   return (
     <section id="about">

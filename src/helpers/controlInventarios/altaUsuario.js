@@ -4,19 +4,6 @@ export const altaUsuario = (formData) => {
 
     const altaUsuario = async() => {
 
-      console.log("formData",formData)
-
-      /* const data = {
-        usuario: formData.usuario,
-        nombre: formData.nombre,
-        telefono: formData.telefono,
-        password: formData.password,
-        correo: formData.correo,
-        perfil: formData.perfil,
-        gobierno: formData.gobierno
-    } */
-
-
         fetch(`https://${URL_SERVER}/altaUsuario`, {
           method: 'POST',
           headers: {

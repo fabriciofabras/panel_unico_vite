@@ -4,6 +4,7 @@ import { Container, Button, Col, Row } from "react-bootstrap";
 import Form from "react-bootstrap/Form"
 import { validateUser } from '../../helpers/panelUnico/validateUser';
 import { UserProfileContext } from "../../UserProfileContext";
+import PropTypes from "prop-types";
 
 export const Login = ({ handleLogueado }) => {
 
@@ -15,7 +16,7 @@ export const Login = ({ handleLogueado }) => {
   });
 
   const [error, setError] = useState('');
-  const [success, setSuccess] = useState('');
+  const [success] = useState('');
   const [sesionActiva, setSesionActiva] = useState(false);
 
   const validarUsuario = (confirmNewSession, userId) => {
@@ -63,7 +64,6 @@ export const Login = ({ handleLogueado }) => {
     // Redirigir a la página de autenticación de Google
     window.location.href = authUrl;
 
-    // validarUsuario(false);
   }
 
   const handleChange = (e) => {
@@ -145,3 +145,7 @@ export const Login = ({ handleLogueado }) => {
   );
 
 }
+
+Login.propTypes = {
+  handleLogueado: PropTypes.func.isRequired, // 👈 valida que se pase una función
+};

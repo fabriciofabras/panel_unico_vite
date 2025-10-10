@@ -1,12 +1,11 @@
 import { Route, Routes } from "react-router-dom"
 import { NavBar } from "../components/panelUnico/NavBar";
-import { Dashboard } from "../components/controlInventarios/Dashboard";
 import { About } from "../components/panelUnico/About";
 import { Repositorio } from "../components/panelUnico/Repositorio";
 import { HeatMap } from "../components/panelUnico/HeatMap";
 import { Monitoreo } from "../components/panelUnico/Monitoreo";
 import { Inventarios } from "../components/panelUnico/Inventarios";
-import { CMDB } from "../components/panelUnico/CMDB";
+import { Cmdb } from "../components/panelUnico/Cmdb";
 import { Mesa } from "../components/panelUnico/Mesa";
 import { useEffect, useState } from "react";
 
@@ -40,24 +39,27 @@ export const PanelUnicoRoutes = () => {
         }
     }, []); // El array vacío significa que se ejecuta una vez cuando el componente se monta
 
-    return(
+    return (
         <>
-        <NavBar userInfo={userInfo}/>
+            <NavBar userInfo={userInfo} />
 
-        {userInfo !== null ? <div></div> : (
-            <div className="container">
-            <Routes>
-            <Route path="/inicio" element={<About/>}></Route>
-            <Route path="/repositorio" element={<Repositorio/>}></Route>
-            <Route path="/heatmap" element={<HeatMap/>}></Route>
-            <Route path="/monitoreo" element={<Monitoreo/>}></Route>
-            <Route path="/stockdepartes" element={<Inventarios/>}></Route>
-            <Route path="/cmdb" element={<CMDB/>}></Route>
-            <Route path="/mesa" element={<Mesa/>}></Route>
-            </Routes>
-        </div>
-        )}
-        
+            {userInfo === null ? (
+                <div className="container">
+                    <Routes>
+                        <Route path="/inicio" element={<About />} />
+                        <Route path="/repositorio" element={<Repositorio />} />
+                        <Route path="/heatmap" element={<HeatMap />} />
+                        <Route path="/monitoreo" element={<Monitoreo />} />
+                        <Route path="/stockdepartes" element={<Inventarios />} />
+                        <Route path="/cmdb" element={<Cmdb />} />
+                        <Route path="/mesa" element={<Mesa />} />
+                    </Routes>
+                </div>
+            ) : (
+                <div></div>
+            )}
+
+
         </>
     )
 }

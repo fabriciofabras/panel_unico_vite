@@ -1,68 +1,32 @@
-import React from "react";
 import { useState, useContext } from "react";
 import { Col, Row } from "react-bootstrap";
 import { UserProfileContext } from "../../UserProfileContext";
 import { NavLink } from "react-router-dom";
 import axios from 'axios';
+import PropTypes from "prop-types";
 
 export const NavBar = ({ onOpcionSeleccionada, handleLogueado, userInfo }) => {
 
-  const handleTestConnection = async () => {
-    const targetUrl = 'https://10.97.1.79'; // Reemplaza con tu URL o IP
-
-    try {
-      const response = await axios.get(targetUrl, {
-        timeout: 5000, // Tiempo de espera de 5 segundos
-      });
-      console.log('Conexión exitosa:', response.data);
-      alert(`Conexión exitosa con: ${targetUrl}`);
-    } catch (error) {
-      console.error('Error al conectar:', error.message);
-      alert(`No se pudo conectar con: ${targetUrl}`);
-    }
-  };
-
-  console.log("userInfo", userInfo)
   const { profile } = useContext(UserProfileContext);
 
-  const handleClick = (opcion) => {
-    onOpcionSeleccionada(opcion);
-  };
-
   const logout = () => {
-    /*  console.log("profile", profile)
-     logoutUser(profile.usuarioSesion.insertedId); */
-
 
     const clientID = "5072c397-67d6-4660-afd4-ff3c453243a6";  // Reemplaza con tu Client ID
-const redirectUri = "https://sari2p1uat.atalait.com.mx/inicio"; // Reemplaza con tu URL de redirección
-const scope = "PanelUnicoSARI2P1";
-const responseType = "code"; // O "code" si planeas usarlo en el backend para obtener el token de acceso
+    const redirectUri = "https://sari2p1uat.atalait.com.mx/inicio"; // Reemplaza con tu URL de redirección
+    const scope = "PanelUnicoSARI2P1";
+    const responseType = "code"; // O "code" si planeas usarlo en el backend para obtener el token de acceso
 
-const resourceServer= "PanelUnicoSARI2P1"
-//const authUrl = `https://auth.uat.cloudb.sat.gob.mx`;
- const authUrl = `https://auth.uat.cloudb.sat.gob.mx/nidp/oauth/nam/authz?resource_server=${resourceServer}&client_id=${clientID}&redirect_uri=${redirectUri}&response_type=${responseType}&scope=${scope}&include_granted_scopes=true`;
- 
-// Redirigir a la página de autenticación de Google
-window.location.href = authUrl;
+    const resourceServer = "PanelUnicoSARI2P1"
+    //const authUrl = `https://auth.uat.cloudb.sat.gob.mx`;
+    const authUrl = `https://auth.uat.cloudb.sat.gob.mx/nidp/oauth/nam/authz?resource_server=${resourceServer}&client_id=${clientID}&redirect_uri=${redirectUri}&response_type=${responseType}&scope=${scope}&include_granted_scopes=true`;
+
+    // Redirigir a la página de autenticación de Google
+    window.location.href = authUrl;
 
   }
 
   const handleSalir = () => {
-    // handleLogueado(false);
     logout();
-  }
-
-  const [language, setLanguage] = useState('ES');
-
-  const smoothScroll = (e, id) => {
-    e.preventDefault();
-    const element = document.getElementById(id);
-
-    window.scrollTo({
-      behavior: "smooth",
-      top: element.offsetTop
-    });
   }
 
   return (
@@ -89,11 +53,11 @@ window.location.href = authUrl;
                   Probar Conexión a la URL
                 </button> */}
                 {userInfo === null ? (
-                  <a onClick={handleSalir}
+                  <button onClick={handleSalir}
                     href="#"
                     className="hover:text-white text-2x1 p-F4">
                     Entrar
-                  </a>
+                  </button>
                 ) : (
                   <div className="text-white justify-center align-center">
                     <Row>
@@ -208,3 +172,13 @@ window.location.href = authUrl;
     </header>
   );
 }
+
+NavBar.propTypes = {
+  onOpcionSeleccionada: PropTypes.func.isRequired,
+  handleLogueado: PropTypes.func.isRequired,
+  userInfo: PropTypes.shape({
+    picture: PropTypes.string, // <- Aquí validas userInfo.picture
+    name: PropTypes.string,    // puedes agregar más propiedades si existen
+    email: PropTypes.string
+  })
+};

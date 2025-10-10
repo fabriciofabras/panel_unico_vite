@@ -17,7 +17,6 @@ export const logoutUser = (idSesion) => {
       }
 
       const data = await response.json();
-      //  alert(data);
 
       return data;
     } catch (error) {
