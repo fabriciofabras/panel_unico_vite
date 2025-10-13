@@ -85,7 +85,6 @@ function ModalAltaUsuario({ isEditMode, idUsuario, handleClose, show, accion }) 
 
 
   return (
-    <>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>{accion} usuario</Modal.Title>
@@ -219,7 +218,6 @@ function ModalAltaUsuario({ isEditMode, idUsuario, handleClose, show, accion }) 
           </Button>
         </Modal.Footer>
       </Modal >
-    </>
   );
 }
 

@@ -124,7 +124,6 @@ function ModalAlta({ isEditMode, idServidor, handleClose, show, accion }) {
 
 
   return (
-    <>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>{accion} servidor</Modal.Title>
@@ -346,7 +345,6 @@ function ModalAlta({ isEditMode, idServidor, handleClose, show, accion }) {
           </Button>
         </Modal.Footer>
       </Modal >
-    </>
   );
 }
 

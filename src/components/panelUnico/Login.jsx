@@ -58,12 +58,10 @@ export const Login = ({ handleLogueado }) => {
 
     const resourceServer = "PanelUnicoSARI2P1"
 
-    //const authUrl = `https://auth.uat.cloudb.sat.gob.mx`;
     const authUrl = `https://auth.uat.cloudb.sat.gob.mx/nidp/oauth/nam/authz?resource_server=${resourceServer}&client_id=${clientID}&redirect_uri=${redirectUri}&response_type=${responseType}&scope=${scope}&include_granted_scopes=true`;
 
-    // Redirigir a la página de autenticación de Google
-    window.location.href = authUrl;
-
+    // Redirigir a la página de autenticación del SAT
+    globalThis.location.href = authUrl;
   }
 
   const handleChange = (e) => {

@@ -129,8 +129,7 @@ function ModalAlta({ isEditMode, idProducto, handleClose, show, accion }) {
 
 
   return (
-    <>
-      <Modal show={show} onHide={handleClose}>
+     <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>{accion} producto</Modal.Title>
         </Modal.Header>
@@ -351,7 +350,6 @@ function ModalAlta({ isEditMode, idProducto, handleClose, show, accion }) {
           </Button>
         </Modal.Footer>
       </Modal >
-    </>
   );
 }
 

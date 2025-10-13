@@ -7,7 +7,7 @@ import ModalAltaUsuario from './ModalAltaUsuario';
 
 export const Usuarios = () => {
 
-    const isInIframe = window.self !== window.top;
+    const isInIframe = globalThis.self !== globalThis.top;
 
     const [usuarios, setUsuarios] = useState([]);
 
@@ -30,36 +30,24 @@ export const Usuarios = () => {
     const openModalForCreate = () => {
         setAccion('Agregar')
         setEditMode(false)
-       // setIdProducto(null)
+        // setIdProducto(null)
+        //setReadOnly(readOnly)
         setShow(true);
-        setReadOnly(readOnly)
     }
     const handleClose = () => setShow(false);
 
 
     useEffect(() => {
 
-        if (isInIframe) {
-            getUsuarios()
-                .then((res) => {
-                    console.log("RES");
-                    console.log(res);
-                    setUsuarios(res);
-                })
-                .catch((e) => {
-                    console.log(e.message);
-                });
-        } else {
-            getUsuarios()
-                .then((res) => {
-                    console.log("RES");
-                    console.log(res);
-                    setUsuarios(res);
-                })
-                .catch((e) => {
-                    console.log(e.message);
-                });
-        }
+        getUsuarios()
+            .then((res) => {
+                console.log("RES");
+                console.log(res);
+                setUsuarios(res);
+            })
+            .catch((e) => {
+                console.log(e.message);
+            });
     }
         , [show]);
 
@@ -73,36 +61,36 @@ export const Usuarios = () => {
                     </Col>
                     <Col lg={6}></Col>
                     <Col lg={3} >
-                    <Button variant="warning" onClick={() => openModalForCreate()}>Nuevo Usuario</Button>
+                        <Button variant="warning" onClick={() => openModalForCreate()}>Nuevo Usuario</Button>
                     </Col>
                 </Row>
             </Container>
             <div className="table-responsive" >
                 <Table className="table p-4 small " variant striped bordered hover>
                     <thead>
-                       <tr style={{fontSize:"12px"}}>
-                                <th style={{width: "15%"}}>Usuario</th>
-                                <th style={{width: "15%"}}>Nombre</th>
-                                <th style={{width: "10%"}}>Teléfono</th>
-                                <th style={{width: "15%"}}>Correo</th>
-                                <th style={{width: "15%"}}>Perfil</th>
-{/*                                 <th style={{width: "15%"}}>Password</th>
+                        <tr style={{ fontSize: "12px" }}>
+                            <th style={{ width: "15%" }}>Usuario</th>
+                            <th style={{ width: "15%" }}>Nombre</th>
+                            <th style={{ width: "10%" }}>Teléfono</th>
+                            <th style={{ width: "15%" }}>Correo</th>
+                            <th style={{ width: "15%" }}>Perfil</th>
+                            {/*                                 <th style={{width: "15%"}}>Password</th>
  */}                                <th className="fixed-col">Editar</th>
-                            </tr>
+                        </tr>
                     </thead>
                     <tbody>
-                       
-                           { usuarios.map((usuario, index) => (
-                                <tr style={{fontSize:"12px"}}>
-                                    <td >{usuario.usuario}</td>
-                                    <td>{usuario.nombre}</td>
-                                    <td>{usuario.telefono}</td>
-                                    <td>{usuario.correo}</td>
-                                    <td>{usuario.perfil}</td>
-{/*                                     <td>{usuario.ubicacion}</td>
+
+                        {usuarios.map((usuario, index) => (
+                            <tr key={usuario.usuario} style={{ fontSize: "12px" }}>
+                                <td >{usuario.usuario}</td>
+                                <td>{usuario.nombre}</td>
+                                <td>{usuario.telefono}</td>
+                                <td>{usuario.correo}</td>
+                                <td>{usuario.perfil}</td>
+                                {/*                                     <td>{usuario.ubicacion}</td>
  */}                                    <td className="fixed-col"><Button onClick={() => openModalForEdit(usuario.id)} variant="warning">Editar</Button></td>
-                                </tr>
-                            ))
+                            </tr>
+                        ))
                         }
                     </tbody>
                 </Table>

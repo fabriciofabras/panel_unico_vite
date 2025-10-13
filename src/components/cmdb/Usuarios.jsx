@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 
 export const Usuarios = () => {
 
-    const isInIframe = window.self !== window.top;
+    const isInIframe = globalThis.self !== globalThis.top;
 
     const [usuarios, setUsuarios] = useState([]);
 
@@ -81,8 +81,8 @@ export const Usuarios = () => {
                     </thead>
                     <tbody>
                        
-                           { usuarios.map((usuario, index) => (
-                                <tr style={{fontSize:"12px"}}>
+                           { usuarios.map((usuario) => (
+                                <tr key={usuario.usuario} style={{fontSize:"12px"}}>
                                     <td >{usuario.usuario}</td>
                                     <td>{usuario.nombre}</td>
                                     <td>{usuario.telefono}</td>

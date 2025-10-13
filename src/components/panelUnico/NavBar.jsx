@@ -1,8 +1,7 @@
-import { useState, useContext } from "react";
+import { useContext } from "react";
 import { Col, Row } from "react-bootstrap";
 import { UserProfileContext } from "../../UserProfileContext";
 import { NavLink } from "react-router-dom";
-import axios from 'axios';
 import PropTypes from "prop-types";
 
 export const NavBar = ({ onOpcionSeleccionada, handleLogueado, userInfo }) => {
@@ -17,11 +16,10 @@ export const NavBar = ({ onOpcionSeleccionada, handleLogueado, userInfo }) => {
     const responseType = "code"; // O "code" si planeas usarlo en el backend para obtener el token de acceso
 
     const resourceServer = "PanelUnicoSARI2P1"
-    //const authUrl = `https://auth.uat.cloudb.sat.gob.mx`;
     const authUrl = `https://auth.uat.cloudb.sat.gob.mx/nidp/oauth/nam/authz?resource_server=${resourceServer}&client_id=${clientID}&redirect_uri=${redirectUri}&response_type=${responseType}&scope=${scope}&include_granted_scopes=true`;
 
     // Redirigir a la página de autenticación de Google
-    window.location.href = authUrl;
+    globalThis.location.href = authUrl;
 
   }
 
@@ -62,7 +60,7 @@ export const NavBar = ({ onOpcionSeleccionada, handleLogueado, userInfo }) => {
                   <div className="text-white justify-center align-center">
                     <Row>
                       <Col>
-                        <img style={{ borderRadius: "50%", width: "75px" }} src={userInfo.picture}></img>
+                        <img alt="User Info" style={{ borderRadius: "50%", width: "75px" }} src={userInfo.picture}></img>
                       </Col>
                     </Row>
                     <Row>
@@ -101,7 +99,7 @@ export const NavBar = ({ onOpcionSeleccionada, handleLogueado, userInfo }) => {
                   </li>
 
                   <li className="menu-item dropdown">
-                    <a href="#">Monitoreo</a>
+                    <a href="/monitoreo">Monitoreo</a>
                     <ul className="dropdown-menu">
                       <li>
                         <NavLink

@@ -11,11 +11,9 @@ import 'jspdf-autotable';
 
 export const Productos = () => {
 
-
-
     const { profile } = useContext(UserProfileContext);
 
-    const isInIframe = window.self !== window.top;
+    const isInIframe = globalThis.self !== globalThis.top;
 
     console.log(isInIframe);
 
@@ -180,8 +178,8 @@ export const Productos = () => {
                         </thead>
                         <tbody>
                             {profile.perfil === 'sat' ? (
-                                filteredData.map((producto, index) => (
-                                    <tr>
+                                filteredData.map((producto) => (
+                                    <tr key={producto.noParte}>
                                         <td>{producto.noParte}</td>
                                         <td>{producto.desc}</td>
                                         <td>{producto.ubicacion}</td>
@@ -191,7 +189,7 @@ export const Productos = () => {
 
                             ) : (
                                 filteredData.map((producto, index) => (
-                                    <tr style={{ fontSize: "12px" }}>
+                                    <tr key={producto.noParte} style={{ fontSize: "12px" }}>
                                         <td>{producto.noParte}</td>
                                         <td >{producto.tipo}</td>
                                         <td>{producto.desc}</td>

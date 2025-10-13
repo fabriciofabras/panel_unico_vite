@@ -15,7 +15,7 @@ export const PanelUnicoRoutes = () => {
 
     // Función para extraer el access_token de la URL
     const getAccessTokenFromUrl = () => {
-        const params = new URLSearchParams(window.location.hash.substring(1));
+        const params = new URLSearchParams(globalThis.location.hash.substring(1));
         return params.get('access_token');
     };
 

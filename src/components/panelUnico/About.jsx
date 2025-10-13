@@ -7,7 +7,7 @@ export const About = () => {
       <div className="container mx-auto flex px-5 py-3 md:flex-row flex-col items-center">
 
         <img
-
+          alt="Panel de inicio"
           src={inicio_panel}
         />
       </div>
