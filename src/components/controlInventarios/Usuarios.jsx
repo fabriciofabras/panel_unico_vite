@@ -7,8 +7,6 @@ import ModalAltaUsuario from './ModalAltaUsuario';
 
 export const Usuarios = () => {
 
-    const isInIframe = globalThis.self !== globalThis.top;
-
     const [usuarios, setUsuarios] = useState([]);
 
     const [accion, setAccion] = useState()
@@ -16,7 +14,6 @@ export const Usuarios = () => {
     const [editMode, setEditMode] = useState(false)
 
     const [show, setShow] = useState(false);
-    const [readOnly, setReadOnly] = useState(false);
 
     const [idUsuario, setIdUsuario] = useState('');
 
