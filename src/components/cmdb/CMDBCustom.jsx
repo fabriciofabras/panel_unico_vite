@@ -76,14 +76,14 @@ export const CMDBCustom = ({ cmdbTipo }) => {
                 <Table className="table p-1 small " variant striped bordered hover>
                     <thead className="table-header">
                         <tr style={{ fontSize: "12px" }}>
-                            {fieldsTable.map((field, index) => (
-                                <th key={index}>{field}</th>
+                            {fieldsTable.map((field) => (
+                                <th key={field}>{field}</th>
                             ))}
                         </tr>
                     </thead>
                     <tbody>
                         {filteredData.map((servidor, index) => (
-                            <tr key={index}>
+                            <tr key={servidor.id || servidor.nombre || servidor.ip || index}>
                                 {servidor.estadoCI === 'Fuera de servicio' || servidor.estadoCI === 'Fuera de Servicio' ? (
                                     Object.keys(servidor).map((key) => (
                                         <td style={{ fontSize: "12px", backgroundColor: '#C0392B', color: 'white' }} key={key}>{servidor[key]}</td>
