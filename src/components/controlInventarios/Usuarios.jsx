@@ -84,8 +84,7 @@ export const Usuarios = () => {
                                 <td>{usuario.telefono}</td>
                                 <td>{usuario.correo}</td>
                                 <td>{usuario.perfil}</td>
-                                {/*                                     <td>{usuario.ubicacion}</td>
- */}                                    <td className="fixed-col"><Button onClick={() => openModalForEdit(usuario.id)} variant="warning">Editar</Button></td>
+                                 <td className="fixed-col"><Button onClick={() => openModalForEdit(usuario.id)} variant="warning">Editar</Button></td>
                             </tr>
                         ))
                         }
