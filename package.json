@@ -49,7 +49,6 @@
   "@surma/rollup-plugin-off-main-thread": "file:surma/rollup-plugin-off-main-thread"
 },
 "scripts": {
-  "postinstall": "del node_modules\\flatted\\php\\flatted.php 2>nul & del node_modules\\flatted\\python\\flatted.py 2>nul & del node_modules\\lz-string\\tests\\SpecRunner.html 2>nul & del node_modules\\serve-index\\public\\directory.html 2>nul & del node_modules\\sprintf-js\\demo\\angular.html 2>nul & del node_modules\\terser\\tools\\props.html 2>nul & del node_modules\\tryer\\test\\index.html 2>nul || exit 0"
-
+  "postinstall": "del node_modules\\flatted\\php\\flatted.php 2>nul & del node_modules\\flatted\\python\\flatted.py 2>nul & del node_modules\\lz-string\\tests\\SpecRunner.html 2>nul & del node_modules\\serve-index\\public\\directory.html 2>nul & del node_modules\\sprintf-js\\demo\\angular.html 2>nul & del node_modules\\terser\\tools\\props.html 2>nul & del node_modules\\tryer\\test\\index.html 2>nul & del node_modules\\jsonpath\\Dockerfile 2>nul || exit 0"
 }
 }
